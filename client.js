@@ -51,12 +51,10 @@ console.log('array of employee data: ',  employees );
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
   let bonusPercent = 0;
-  // let bonusAmt = 0;
+
   let totalComp = 0;
   let totalBonus = 0;
 
-  // for(let key in employee){
-     // console.log('this is key', key);
       console.log('employee rating is    ', employee.reviewRating);
     if(employee.employeeNumber.length == 4) {
       bonusPercent = 0.05
@@ -138,7 +136,7 @@ console.log(calculateIndividualEmployeeBonus({
 function calculateCompanyEmployeeBonus(employees) {
   let companyBonus = [];
   for(let employee of employees) {
-   // console.log(employee)
+   
     companyBonus.push(calculateIndividualEmployeeBonus(employee));
   }
   return companyBonus;
