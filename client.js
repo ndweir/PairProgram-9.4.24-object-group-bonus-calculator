@@ -55,37 +55,37 @@ function calculateIndividualEmployeeBonus( employee ) {
   let totalComp = 0;
   let totalBonus = 0;
 
-  for(let key in employee){
-      //console.log(key);
+  // for(let key in employee){
+     // console.log('this is key', key);
       console.log('employee rating is    ', employee.reviewRating);
     if(employee.employeeNumber.length == 4) {
-      bonusPercent += 0.05;
+      bonusPercent = 0.05
     } 
     
-    // else if(employee.reviewRating == 5) {
-    //      bonusPercent += 0.1;
-    // } else if(employee.reviewRating == 4){
-    //     // totalBonus = employee.annualSalary * 1.06;
-    //     bonusPercent += 0.06;
-    // } else if(employee.reviewRating == 3){
-    //     // totalBonus = employee.annualSalary * 1.04;
-    //     bonusPercent += 0.04;
-    // } else if(+employee.annualSalary > 65000){
-    //   bonusPercent -= 0.01;
-    // } else if(bonusPercent > 0.13) {
-    //   bonusPercent = 0.13
-    // } else if(bonusPercent < 0) {
-    //   bonusPercent = 0;
-    // }
-
-
-
-
-
+    if(employee.reviewRating === 5) {
+        bonusPercent += 0.1;
+     } 
+    
+    if(employee.reviewRating == 4){
+        bonusPercent += 0.06;
+    } 
+    
+    if(employee.reviewRating == 3){
+        bonusPercent += 0.04;
+    } 
+    
+    if(+employee.annualSalary > 65000){
+      bonusPercent -= 0.01;
+    } 
+    
+   if(bonusPercent > 0.13) {
+      bonusPercent = 0.13
+    } 
+    
+   if(bonusPercent < 0) {
+      bonusPercent = 0;
     }
-    console.log('Employee ', employee.annualSalary);
-  
-  // return new object with bonus results
+
     totalBonus = bonusPercent * +employee.annualSalary;
     totalComp = +employee.annualSalary + totalBonus;
 
@@ -96,9 +96,6 @@ function calculateIndividualEmployeeBonus( employee ) {
     totalBonus: totalBonus
   }
 }
-
-console.log("TEST");
-
 
 
 console.log(calculateIndividualEmployeeBonus({
@@ -114,21 +111,37 @@ console.log(calculateIndividualEmployeeBonus({
   annualSalary: '47000',
   reviewRating: 3
 }));
+
 console.log(calculateIndividualEmployeeBonus({
   name: 'Jem',
   employeeNumber: '62347',
   annualSalary: '63500',
   reviewRating: 4
 }));
+
 console.log(calculateIndividualEmployeeBonus({
   name: 'Scout',
   employeeNumber: '6243',
   annualSalary: '74750',
   reviewRating: 5
 }));
+
 console.log(calculateIndividualEmployeeBonus({
   name: 'Robert',
   employeeNumber: '26835',
   annualSalary: '66000',
   reviewRating: 1
 }));
+
+
+
+function calculateCompanyEmployeeBonus(employees) {
+  let companyBonus = [];
+  for(let employee of employees) {
+   // console.log(employee)
+    companyBonus.push(calculateIndividualEmployeeBonus(employee));
+  }
+  return companyBonus;
+}
+
+console.log(calculateCompanyEmployeeBonus(employees));
